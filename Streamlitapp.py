@@ -31,12 +31,11 @@ def main():
     if uploaded_file is not None:
         image_data = uploaded_file.getvalue()
         st.image(image_data)
-        image = Image.open(image_data)
+        image = Image.open(io.BytesIO(image_data))
     else:
         image= "",
     result = st.button('Run on image')
     if result:
-        image = Image.open(io.BytesIO(image))
         buffered = io.BytesIO()
         image = image.convert("RGB")
         image.save(buffered, quality=90, format="JPEG")
@@ -52,8 +51,6 @@ def main():
         print(r.json())
         preds = r.json()
         detections = preds['predictions']
-        image = Image.open(io.BytesIO(image))
-
         draw = ImageDraw.Draw(image)
         font = ImageFont.load_default()
 
