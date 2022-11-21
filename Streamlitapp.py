@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 from PIL import Image
 import io
+
 def load_image():
     uploaded_file = st.file_uploader(label='Pick an image to test')
     if uploaded_file is not None:
