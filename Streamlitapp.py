@@ -24,7 +24,6 @@ import time
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
-from roboflow import Roboflow
 
 def load_image():
     uploaded_file = st.file_uploader(label='Pick an image to test')
