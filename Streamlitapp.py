@@ -39,8 +39,7 @@ def main():
     image = load_image()
     result = st.button('Run on image')
     if result:
-        f = image
-        image = Image.open(f)
+        image = Image.open(image)
         buffered = io.BytesIO()
         image = image.convert("RGB")
         image.save(buffered, quality=90, format="JPEG")
@@ -56,8 +55,7 @@ def main():
         print(r.json())
         preds = r.json()
         detections = preds['predictions']
-        f = image
-        image = Image.open(f)
+        image = Image.open(image)
 
         draw = ImageDraw.Draw(image)
         font = ImageFont.load_default()
