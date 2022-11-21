@@ -25,21 +25,18 @@ from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
 
-def load_image():
+def main():
+    st.title('Pretrained model demo')
     uploaded_file = st.file_uploader(label='Pick an image to test')
     if uploaded_file is not None:
         image_data = uploaded_file.getvalue()
         st.image(image_data)
-        return Image.open(io.BytesIO(image_data))
+        image = Image.open(io.BytesIO(image_data))
     else:
-        return None
-
-def main():
-    st.title('Pretrained model demo')
-    image = load_image()
+        image= "",
     result = st.button('Run on image')
     if result:
-        image = Image.open(image)
+        image = Image.open(io.BytesIO(image))
         buffered = io.BytesIO()
         image = image.convert("RGB")
         image.save(buffered, quality=90, format="JPEG")
@@ -55,7 +52,7 @@ def main():
         print(r.json())
         preds = r.json()
         detections = preds['predictions']
-        image = Image.open(image)
+        image = Image.open(io.BytesIO(image))
 
         draw = ImageDraw.Draw(image)
         font = ImageFont.load_default()
