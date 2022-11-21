@@ -21,7 +21,6 @@ from base64 import decodebytes
 import io
 from PIL import Image
 import time
-import cv2
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 import streamlit as st
